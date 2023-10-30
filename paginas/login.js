@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Button, TextInput, ActivityIndicator, StyleSheet } from 'react-native';
 import firebase from 'firebase';
+import {estilos} from '../css/estilos'
 
 export default class Login extends Component {
   constructor() {
@@ -25,7 +26,7 @@ export default class Login extends Component {
     } else {
       this.setState({ isLoading: true });
       firebase
-        .auth()
+        .auth() //Autenticação
         .signInWithEmailAndPassword(this.state.email, this.state.password)
         .then((response) => {
           this.setState({
@@ -88,21 +89,5 @@ export default class Login extends Component {
   }
 }
 
-const estilos = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  inputTextStyle: {
-    width: '80%',
-    padding: 15,
-    marginBottom: 15,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-  },
-  logintext: {
-    marginTop: 20,
-  },
-});
+
+

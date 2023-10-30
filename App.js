@@ -13,7 +13,7 @@ const Stack = createStackNavigator();
 
 function Inicial(){
   return(
-    <Stack.Navigator initialRouteName="ConsultarLista" 
+    <Stack.Navigator initialRouteName="Home" 
     screenOptions={{
       headerTitleAlign: 'center',
       headerStyle: {

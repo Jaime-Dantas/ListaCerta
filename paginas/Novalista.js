@@ -1,0 +1,115 @@
+import React, { Component } from 'react';
+import { View, Text, TextInput, Button, FlatList, StyleSheet } from 'react-native';
+import firebase from 'firebase';
+import {estilos} from '../css/estilos'
+
+
+
+class NovaLista extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      nomeLista: '',
+      nomeProduto: '',
+      valorProduto: '',
+      quantidadeProduto: '',
+      produtos: [],
+    };
+  }
+
+  criarNovaLista = () => {
+    const { nomeLista, produtos } = this.state;
+    const db = firebase.firestore(); // Aqui fica a instância do Firestore
+
+    // Criar uma nova lista no Firestore
+    db.collection('listas').add({
+      nome: nomeLista,
+      produtos: produtos,
+    })
+    .then((docRef) => {
+      console.log('Nova lista criada com ID: ', docRef.id);
+    })
+    .catch((error) => {
+      console.error('Erro ao criar a lista: ', error);
+    });
+
+    // Limpar o estado
+    this.setState({ nomeLista: '', produtos: [] });
+  }
+
+  adicionarProduto = () => {
+    const { nomeProduto, valorProduto, quantidadeProduto } = this.state;
+
+    // Criar um novo objeto de produto
+    const novoProduto = {
+      nome: nomeProduto,
+      valor: valorProduto,
+      quantidade: quantidadeProduto,
+      total: valorProduto * quantidadeProduto,
+    };
+
+    // Adicionar o produto à lista de produtos
+    this.setState((prevState) => ({
+      produtos: [...prevState.produtos, novoProduto],
+      nomeProduto: '',
+      valorProduto: '',
+      quantidadeProduto: '',
+    }));
+  }
+
+  render() {
+    return (
+      <View style={estilos.container3}>
+        <Text>Nome da Lista:</Text>
+        <TextInput
+          style={estilos.input}
+          value={this.state.nomeLista}
+          onChangeText={(text) => this.setState({ nomeLista: text })}
+        />
+        
+
+        <Text>Adicionar Produto:</Text>
+        <TextInput
+          style={estilos.input}
+          placeholder="Nome do Produto"
+          value={this.state.nomeProduto}
+          onChangeText={(text) => this.setState({ nomeProduto: text })}
+        />
+        <TextInput
+          style={estilos.input}
+          placeholder="Valor"
+          value={this.state.valorProduto}
+          onChangeText={(text) => this.setState({ valorProduto: parseFloat(text) || 0 })}
+        />
+        <TextInput
+          style={estilos.input}
+          placeholder="Quantidade"
+          value={this.state.quantidadeProduto}
+          onChangeText={(text) => this.setState({ quantidadeProduto: parseInt(text) || 0 })}
+        />
+        <Button title="Adicionar Produto" onPress={this.adicionarProduto} />
+        <br/>
+        <Button title="Salvar Lista" onPress={this.criarNovaLista} />
+
+        <Text>Produtos Adicionados:</Text>
+        <FlatList
+          data={this.state.produtos}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item }) => (
+            <View style={estilos.produtoItem}>
+              <Text>Nome: {item.nome}</Text>
+              <Text>Valor: {item.valor}</Text>
+              <Text>Quantidade: {item.quantidade}</Text>
+              <Text>Total: {item.total}</Text>
+            </View>
+          )}
+        />
+        
+      </View>
+    );
+  }
+}
+
+
+
+export default NovaLista;

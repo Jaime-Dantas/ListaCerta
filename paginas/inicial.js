@@ -1,41 +1,44 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Appbar, Card, Title, Button } from 'react-native-paper';
+import {estilos} from '../css/estilos'
 
 export default function Home({ navigation }) {
   return (
-    <View style={styles.container}>
-      <Appbar.Header style={styles.appbar}>
+    <View style={estilos.container1}>
+      <Appbar.Header style={estilos.appbar}>
         <Appbar.Content title="ListaCerta" />
       </Appbar.Header>
-      <View style={styles.contentContainer}>
-        <Card style={styles.card}>
-          <Card.Content style={styles.cardContent}>
+      <View style={estilos.contentContainer}>
+        <Card style={estilos.card}>
+          <Card.Content style={estilos.cardContent}>
             <Title>Criar Nova Lista</Title>
           </Card.Content>
-          <View style={styles.cardActions}>
+
+          <View style={estilos.cardActions}>
             <Button
               mode="contained"
               onPress={() => {
                 // Navegar para a tela de criação de lista
-                navigation.navigate('CriarLista');
+                navigation.navigate('NovaLista');
               }}
             >
               Ir para Criar Lista
             </Button>
           </View>
+          
         </Card>
 
-        <Card style={styles.card}>
-          <Card.Content style={styles.cardContent}>
+        <Card style={estilos.card}>
+          <Card.Content style={estilos.cardContent}>
             <Title>Visualizar Listas</Title>
           </Card.Content>
-          <View style={styles.cardActions}>
+          <View style={estilos.cardActions}>
             <Button
               mode="contained"
               onPress={() => {
                 // Navegar para a tela de consulta de listas
-                navigation.navigate('ConsultarListas');
+                navigation.navigate('ConsultarLista');
               }}
             >
               Ir para Visualizar Listas
@@ -47,27 +50,4 @@ export default function Home({ navigation }) {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  appbar: {
-    backgroundColor: 'blue',
-  },
-  contentContainer: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  card: {
-    margin: 8,
-    width: '90%',
-    alignSelf: 'center',
-    marginTop: 16,
-  },
-  cardContent: {
-    alignItems: 'center', // Centraliza o conteúdo horizontalmente
-  },
-  cardActions: {
-    alignItems: 'center', // Centraliza os botões horizontalmente
-  },
-});
+
