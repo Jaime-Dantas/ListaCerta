@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, Button, TextInput, ActivityIndicator } from 'react-native';
+import { View, Text, Button, TextInput, ActivityIndicator, Image } from 'react-native';
 import firebase from 'firebase';
 import { estilos } from '../css/estilos';
+import CustomButton from './CustomButton'
 
 export default class Cadastro extends Component {
   constructor() {
@@ -67,6 +68,11 @@ export default class Cadastro extends Component {
 
     return (
       <View style={estilos.container}>
+        <Image
+          source={require('../assets/listacerta.png')}
+          style={estilos.logo}
+        />
+
         <TextInput
           style={estilos.inputTextStyle}
           placeholder="Nome completo"
@@ -90,10 +96,9 @@ export default class Cadastro extends Component {
           maxLength={8}
         />
 
-        <Button title="Cadastrar"
+        <CustomButton title="Cadastrar"
                 color="#FFD580"
                 onPress={() => this.cadastroUsuario()}
-                style={estilos.botaoCadastrar} // Estilo personalizado para o botão
                 />
 
         {this.state.errorMessage !== '' && (

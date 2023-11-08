@@ -1,13 +1,13 @@
 import {StyleSheet} from 'react-native'
 
 export const estilos = StyleSheet.create({
-container: {
+ container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f5f5f5'
-},
-inputTextStyle: {
+    backgroundColor: '#fff'
+  },
+  inputTextStyle: {
     width: '80%',
     padding: 15,
     marginBottom: 15,
@@ -15,43 +15,48 @@ inputTextStyle: {
     borderColor: '#ccc',
     borderRadius: 10,
     backgroundColor: '#fff',
-},
-logintext: {
+  },
+  logintext: {
     marginTop: 20,
     color: 'black',
-},
-container1: {
+  },
+  container1: {
     flex: 1,
     backgroundColor: '#f5f5f5',
-},
-appbar: {
-    backgroundColor: '#FFD580',
+  },
+  appbar: {
+    margin: 2,
+    color: 'white', // Cor do texto
+    fontSize: 40, // Tamanho da fonte
+    height: 50,
+    fontWeight: 'bold', //Deixar texto em Negrito
+    backgroundColor: '#19417f',
+    alignSelf: 'center',
     justifyContent: 'center',
-    alignItems: 'center',
-},
-contentContainer: {
+  },
+  contentContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-},
-card: {
+  },
+  card: {
     margin: 8,
     width: '90%',
     alignSelf: 'center',
     borderRadius: 10,
     backgroundColor: '#fff',
     elevation: 4,
-},
-cardContent: {
+  },
+  cardContent: {
     alignItems: 'center', // Centraliza o conteúdo horizontalmente
     padding: 16,
-},
-cardActions: {
+  },
+  cardActions: {
     alignItems: 'center', // Centraliza os botões horizontalmente
     margin: 10,
-},
-container2: {
-     backgroundColor: '#FFD580',
+  },
+  container2: {
+    backgroundColor: '#1bb1c0',
     padding: 20,
     borderRadius: 10,
     margin: 20,
@@ -61,9 +66,26 @@ container2: {
       height: 0,
     },
     shadowRadius: 10,
-  
-},
-listaItem: {
+  },
+    text1: {
+    textAlign: 'center', // Centraliza o texto horizontalmente
+    color: 'white', // Cor do texto
+    fontSize: 16, // Tamanho da fonte
+    height: 30,
+    fontWeight: 'bold', //Deixar texto em Negrito
+    margin: 10,
+  },
+  text2: {
+    textAlign: 'center', // Centraliza o texto horizontalmente
+    textAlignVertical: 'center', //Centralizar o texto verticalmente
+    color: 'black', // Cor do texto
+    fontSize: 16, // Tamanho da fonte
+    height: 30,
+    fontWeight: 'bold', //Deixar texto em Negrito
+    margin: 10,    
+
+  },
+  listaItem: {
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 10,
@@ -73,9 +95,9 @@ listaItem: {
     justifyContent: 'space-between',
     backgroundColor: '#fff',
     elevation: 2,
-},
-container3: {
-    backgroundColor: '#FFD580',
+  },
+  container3: {
+    backgroundColor: '#1bb1c0',
     padding: 20,
     borderRadius: 10,
     margin: 20,
@@ -85,17 +107,21 @@ container3: {
       height: 0,
     },
     shadowRadius: 10,
-},
-input: {
+  },
+  input: {
     borderWidth: 2,
-    borderColor: '#ccc',
+    borderColor: '#fff',
     borderRadius: 10,
+    margin: 5,
     marginBottom: 10,
     padding: 15,
-    backgroundColor: 'white'
-    
-},
-produtoItem: {
+    color: '#fff',
+  },
+  placeholder:{
+    color: 'white', //cor do placeholder em branco
+
+  },
+  produtoItem: {
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 10,
@@ -103,63 +129,23 @@ produtoItem: {
     padding: 15,
     backgroundColor: '#fff',
     elevation: 2,
-},  
-botao: {
-  borderWidth: 2, // Largura da borda
-  borderColor: '#3740fe', // Cor da borda (pode ajustar conforme necessário)
-  borderRadius: 10, // Arredonda os cantos para dar uma aparência mais suave
-},
-botaoAdicionar: {
-    backgroundColor: '#00aaff', // Cor de fundo azul claro
-    borderRadius: 10, // Bordas arredondadas
-    padding: 10, // Espaçamento interno
-    color: 'white', // Cor do texto branco
+  },  
+  botao: {
+    borderWidth: 1, // Largura da borda
+    borderColor: '#19417f', // Cor da borda (pode ajustar conforme necessário)
+    borderRadius: 10, // Arredonda os cantos para dar uma aparência mais suave
   },
-  botaoSalvar: {
-    backgroundColor: '#00aaff', // Cor de fundo azul claro
-    borderRadius: 10, // Bordas arredondadas
-    padding: 10, // Espaçamento interno
-    color: 'white', // Cor do texto branco
+//criei para deixar a imagem em tamanho certo
+  logo:{
+    width: 300,
+    height: 300,
+    resizeMode:'contain'
   },
-botaoCadastrar: {
-  borderWidth: 2, // Largura da borda
-  borderColor: '#3740fe', // Cor da borda (pode ajustar conforme necessário)
-  borderRadius: 10, // Arredonda os cantos para dar uma aparência mais suave
-  padding: 10, // Espaçamento interno
-  margin: 5, // Margem
-},
-detalheslista: {
-    backgroundColor: '#FFD580',
-    padding: 20,
-    borderRadius: 10,
-    margin: 20,
-    shadowColor: 'rgba(0, 0, 0, 0.2)',
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
-    shadowRadius: 10,
-},
-table: {
-    flex: 1,
-    margin: 10,
-  },
-  tableRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  tableCell: {
-    flex: 1,
-    borderWidth: 1,
-    borderColor: '#000',
-    padding: 10,
-  },
-  tableHeader: {
-    backgroundColor: '#e0e0e0',
-    fontWeight: 'bold',
-  },
+  botaosalvar: {
+
+  
+
+}
+
 
 });
-
-

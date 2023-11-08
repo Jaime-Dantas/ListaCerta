@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, Button, TextInput, ActivityIndicator} from 'react-native';
+import { View, Text, TextInput, ActivityIndicator, Image} from 'react-native';
 import firebase from 'firebase';
 import {estilos} from '../css/estilos'
+import CustomButton from './CustomButton'
 
 export default class Login extends Component {
   constructor() {
@@ -56,6 +57,11 @@ export default class Login extends Component {
     }
     return (
       <View style={estilos.container}>
+        <Image
+          source={require('../assets/listacerta.png')}
+          style={estilos.logo}
+        />
+
         <TextInput
           style={estilos.inputTextStyle}
           placeholder="Email"
@@ -72,11 +78,11 @@ export default class Login extends Component {
           secureTextEntry={true}
         />
 
-        <Button
-          color="#FFD580"
+        <CustomButton
           title="Logar"
           onPress={() => this.userLogin()}
-          style={estilos.botao}
+          buttonStyle={estilos.botao, { height: 50, width: 100 }} // Estilo para o botão
+          textStyle={estilos.buttonText} // Estilo para o texto do botão
         />
 
         <Text

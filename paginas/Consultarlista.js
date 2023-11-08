@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, FlatList, Button, StyleSheet } from 'react-native';
 import firebase from 'firebase';
 import {estilos} from '../css/estilos'
+import CustomButton from './CustomButton'
 
 class ConsultarLista extends Component {
   constructor(props) {
@@ -34,14 +35,14 @@ class ConsultarLista extends Component {
   render() {
     return (
        <View style={estilos.container2}>
-        <Text>Listas Salvas:</Text>
+        <Text style={estilos.text1}>Listas Salvas:</Text>
         <FlatList
           data={this.state.listas}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <View style={estilos.listaItem}>
-              <Text>{item.nome}</Text>
-              <Button
+              <Text style={estilos.text2}>{item.nome}</Text>
+              <CustomButton
                 title="Ver Detalhes"
                 onPress={() => {
                   // Naveguar para a tela de detalhes da lista com os produtos                  

@@ -56,7 +56,7 @@ class NovaLista extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Nome da Lista:</Text>
+        <Text >Nome da Lista:</Text>
         <TextInput
           style={styles.input}
           value={this.state.nomeLista}

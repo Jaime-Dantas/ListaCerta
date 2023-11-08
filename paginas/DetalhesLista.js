@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TextInput, Button, FlatList, StyleSheet } from 'react-native';
 import firebase from 'firebase';
 import { estilos } from '../css/estilos';
+import CustomButton from './CustomButton'
 
 class DetalhesLista extends Component {
   constructor(props) {
@@ -147,7 +148,7 @@ class DetalhesLista extends Component {
   render() {
     return (
       <View style={estilos.container2}>
-        <Text>Detalhes da Lista</Text>
+        <Text style={estilos.text1}>Detalhes da Lista:</Text>
         <Text>Nome da Lista:</Text>
         {this.state.editandoLista ? (
           <TextInput
@@ -159,14 +160,23 @@ class DetalhesLista extends Component {
         )}
 
         {this.state.editandoLista ? (
-          <Button title="Salvar Alterações" onPress={this.salvarLista} />
+          <CustomButton title="Salvar Alterações" onPress={this.salvarLista}
+          buttonStyle={estilos.botao, { height: 50, width: 225 }} // Estilo para o botão
+          textStyle={estilos.buttonText} // Estilo para o texto do botão   
+           />
         ) : (
-          <Button title="Editar Lista" onPress={this.editarLista} />
+          <CustomButton title="Editar Lista" onPress={this.editarLista}
+          buttonStyle={estilos.botao, { height: 50, width: 225 }} // Estilo para o botão
+          textStyle={estilos.buttonText} // Estilo para o texto do botão   
+           />
         )}
 
-        <Button title="Excluir Lista" onPress={this.excluirLista} />
+        <CustomButton title="Excluir Lista" onPress={this.excluirLista} 
+          buttonStyle={estilos.botao, { height: 50, width: 225 }} // Estilo para o botão
+          textStyle={estilos.buttonText} // Estilo para o texto do botão        
+         />
 
-        <Text>Produtos:</Text>
+        <Text style={estilos.text1}>Produtos:</Text>
         <FlatList
           data={this.state.editandoLista ? this.state.novoProdutos : this.state.produtos}
           keyExtractor={(item, index) => index.toString()}
@@ -175,18 +185,24 @@ class DetalhesLista extends Component {
               {this.state.editandoProduto === index ? (
                 <View>
                   <TextInput
+                    style={estilos.text2}
                     value={this.state.novoNomeProduto}
                     onChangeText={(text) => this.setState({ novoNomeProduto: text })}
                   />
                   <TextInput
+                    style={estilos.text2}
                     value={this.state.novoValorProduto.toString()}
                     onChangeText={(text) => this.setState({ novoValorProduto: text })}
                   />
                   <TextInput
+                    style={estilos.text2}
                     value={this.state.novaQuantidadeProduto.toString()}
                     onChangeText={(text) => this.setState({ novaQuantidadeProduto: text })}
                   />
-                  <Button title="Salvar" onPress={this.salvarEdicaoProduto} />
+                  <CustomButton title="Salvar" onPress={this.salvarEdicaoProduto} 
+                  buttonStyle={estilos.botao, { height: 50, width: 225 }} // Estilo para o botão
+                  textStyle={estilos.buttonText} // Estilo para o texto do botão   
+                  />
                 </View>
               ) : (
                 <View>
@@ -195,8 +211,14 @@ class DetalhesLista extends Component {
                   <Text>Valor: R${item.valor}</Text>
                   <Text>Quantidade: {item.quantidade}</Text>
                   <Text>Total: R${item.total.toFixed(2)}</Text>
-                  <Button title="Editar" onPress={() => this.editarProduto(index)} />
-                  <Button title="Remover" onPress={() => this.removerProduto(index)} />
+                  <CustomButton title="Editar" onPress={() => this.editarProduto(index)}
+                  buttonStyle={estilos.botao , { height: 50, width: 200 }} // Estilo para o botão
+                  textStyle={estilos.buttonText} // Estilo para o texto do botão   
+                   />
+                  <CustomButton title="Remover" onPress={() => this.removerProduto(index)}
+                  buttonStyle={estilos.botao, { height: 50, width: 200 }} // Estilo para o botão
+                  textStyle={estilos.buttonText} // Estilo para o texto do botão   
+                   />
                 </View>
               )}
             </View>

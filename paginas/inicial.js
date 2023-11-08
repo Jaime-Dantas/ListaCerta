@@ -8,20 +8,20 @@ export default function Home({ navigation }) {
   return (
     <View style={estilos.container1}>
       <Appbar.Header style={estilos.appbar}>
-        <Appbar.Content title="ListaCerta"  titleStyle={estilos.appbarTitle} />
+        <Appbar.Content title="ListaCerta"  style={estilos.appbar} />
       </Appbar.Header>
       <View style={estilos.contentContainer}>
 
 <Card style={estilos.card}>
   <Card.Content style={estilos.cardContent}>
-    <Icon name="list-alt" size={48} color="#FFD580" /> {/* Ícone "Criar Lista" */}
+    <Icon name="list-alt" size={48} color="#1bb1c0" /> {/* Ícone "Criar Lista" */}
     <Title style={estilos.cardTitle}>Criar Nova Lista</Title>
   </Card.Content>
 
   <View style={estilos.cardActions}>
     <Button
       mode="contained"
-      color="#FFD580"
+      color="#fe7f00"
       onPress={() => {
         // Navegar para a tela de criação de lista
         navigation.navigate('NovaLista');
@@ -34,13 +34,13 @@ export default function Home({ navigation }) {
 
 <Card style={estilos.card}>
   <Card.Content style={estilos.cardContent}>
-    <Icon name="list-ul" size={48} color="#FFD580" /> {/* Ícone "Visualizar Listas" */}
+    <Icon name="list-ul" size={48} color="#1bb1c0" /> {/* Ícone "Visualizar Listas" */}
     <Title style={estilos.cardTitle}>Visualizar Listas</Title>
   </Card.Content>
   <View style={estilos.cardActions}>
     <Button
       mode="contained"
-      color="#FFD580"
+      color="#fe7f00"
       onPress={() => {
         // Navegar para a tela de consulta de listas
         navigation.navigate('ConsultarLista');

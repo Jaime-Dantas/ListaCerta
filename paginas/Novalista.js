@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import firebase from 'firebase';
 import { estilos } from '../css/estilos';
+import CustomButton from './CustomButton'
 
 class NovaLista extends Component {
   constructor(props) {
@@ -62,14 +63,17 @@ class NovaLista extends Component {
   render() {
     return (
       <View style={estilos.container3}>
-        <Text>Nome da Lista:</Text>
+        <Text style={estilos.text1}>Nome da Lista:</Text>
         <TextInput
+          
           style={estilos.input}
+          placeholder="Digite o nome da lista"
+          placeholderTextColor={estilos.placeholder}
           value={this.state.nomeLista}
           onChangeText={(text) => this.setState({ nomeLista: text })}
         />
 
-        <Text>Adicionar Produto:</Text>
+        <Text style={estilos.text1}>Adicionar Produto:</Text>
         <TextInput
           style={estilos.input}
           placeholder="Nome do Produto"
@@ -99,19 +103,19 @@ class NovaLista extends Component {
             this.setState({ quantidadeProduto: parseInt(text) || 0 })
           }
         />
-        <Button
+        <CustomButton
           title="Adicionar Produto"
           onPress={this.adicionarProduto}
           style={estilos.botaoAdicionar}
         />
 
-        <Button
+        <CustomButton
           title="Salvar Lista"
           onPress={this.criarNovaLista}
           style={estilos.botaoSalvar}
         />
 
-        <Text>Produtos Adicionados:</Text>
+        <Text style={estilos.text1}>Produtos Adicionados:</Text>
         {this.state.produtos.length > 0 && (
           <table>
             <thead>
