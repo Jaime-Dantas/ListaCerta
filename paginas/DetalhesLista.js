@@ -87,7 +87,7 @@ class DetalhesLista extends Component {
     listaRef
       .delete()
       .then(() => {
-        this.props.navigation.goBack(); // Volte para a tela anterior após excluir a lista
+        this.props.navigation.goBack();
       })
       .catch((error) => {
         console.error('Erro ao excluir a lista:', error);
@@ -111,17 +111,37 @@ class DetalhesLista extends Component {
       novoProdutos[editandoProduto].nome = novoNomeProduto;
       novoProdutos[editandoProduto].valor = parseFloat(novoValorProduto);
       novoProdutos[editandoProduto].quantidade = parseInt(novaQuantidadeProduto);
+      novoProdutos[editandoProduto].total = novoProdutos[editandoProduto].valor * novoProdutos[editandoProduto].quantidade;
+    }
 
-      // Limpar os campos de edição
-      this.setState({
-        editandoProduto: -1,
+    this.setState({
+      editandoProduto: -1,
+      novoNomeProduto: '',
+      novoValorProduto: '',
+      novaQuantidadeProduto: '',
+    });
+
+    this.atualizarDadosNoFirestore();
+  }
+
+  adicionarProduto = () => {
+    const { novoProdutos, novoNomeProduto, novoValorProduto, novaQuantidadeProduto } = this.state;
+
+    if (novoNomeProduto && novoValorProduto && novaQuantidadeProduto) {
+      const novoProduto = {
+        nome: novoNomeProduto,
+        valor: parseFloat(novoValorProduto),
+        quantidade: parseInt(novaQuantidadeProduto),
+        total: parseFloat(novoValorProduto) * parseInt(novaQuantidadeProduto),
+      };
+
+      this.setState((prevState) => ({
+        novoProdutos: [...prevState.novoProdutos, novoProduto],
         novoNomeProduto: '',
         novoValorProduto: '',
         novaQuantidadeProduto: '',
-      });
+      }));
     }
-
-    this.atualizarDadosNoFirestore();
   }
 
   render() {
@@ -144,7 +164,6 @@ class DetalhesLista extends Component {
           <Button title="Editar Lista" onPress={this.editarLista} />
         )}
 
-        {/* Botão para excluir a lista */}
         <Button title="Excluir Lista" onPress={this.excluirLista} />
 
         <Text>Produtos:</Text>
@@ -175,6 +194,7 @@ class DetalhesLista extends Component {
                   <Text>Nome: {item.nome}</Text>
                   <Text>Valor: R${item.valor}</Text>
                   <Text>Quantidade: {item.quantidade}</Text>
+                  <Text>Total: R${item.total.toFixed(2)}</Text>
                   <Button title="Editar" onPress={() => this.editarProduto(index)} />
                   <Button title="Remover" onPress={() => this.removerProduto(index)} />
                 </View>

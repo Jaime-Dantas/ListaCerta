@@ -39,12 +39,15 @@ class NovaLista extends Component {
   adicionarProduto = () => {
     const { nomeProduto, valorProduto, quantidadeProduto } = this.state;
 
+    // Calcular o total
+    const total = parseFloat(valorProduto) * parseInt(quantidadeProduto);
+
     // Criar um novo objeto de produto
     const novoProduto = {
       nome: nomeProduto,
-      valor: valorProduto,
-      quantidade: quantidadeProduto,
-      total: valorProduto * quantidadeProduto,
+      valor: parseFloat(valorProduto),
+      quantidade: parseInt(quantidadeProduto),
+      total: total,
     };
 
     // Adicionar o produto à lista de produtos
@@ -117,6 +120,7 @@ class NovaLista extends Component {
                 <th>Nome</th>
                 <th>Valor</th>
                 <th>Quantidade</th>
+                <th>Total</th>
               </tr>
             </thead>
             <tbody>
@@ -126,6 +130,7 @@ class NovaLista extends Component {
                   <td>{produto.nome}</td>
                   <td>{produto.valor}</td>
                   <td>{produto.quantidade}</td>
+                  <td>{produto.total}</td>
                 </tr>
               ))}
             </tbody>

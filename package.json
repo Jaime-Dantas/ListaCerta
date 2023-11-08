@@ -19,7 +19,8 @@
     "@react-navigation/native": "6.0.0",
     "react-native-vector-icons": "*",
     "react-native-gesture-handler": "~2.9.0",
-    "react-native-safe-area-context": "4.5.0"
+    "react-native-safe-area-context": "4.5.0",
+    "react-native-table-component": "*"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

@@ -1,5 +1,6 @@
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
+import { Table, Row, Rows } from 'react-native-table-component';
 
 
 
