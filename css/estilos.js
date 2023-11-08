@@ -1,75 +1,165 @@
 import {StyleSheet} from 'react-native'
 
 export const estilos = StyleSheet.create({
- container: {
+container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  inputTextStyle: {
+    backgroundColor: '#f5f5f5'
+},
+inputTextStyle: {
     width: '80%',
     padding: 15,
     marginBottom: 15,
     borderWidth: 1,
     borderColor: '#ccc',
-    borderRadius: 5,
-  },
-  logintext: {
+    borderRadius: 10,
+    backgroundColor: '#fff',
+},
+logintext: {
     marginTop: 20,
-  },
-  container1: {
+    color: 'black',
+},
+container1: {
     flex: 1,
-  },
-  appbar: {
-    backgroundColor: 'blue',
-  },
-  contentContainer: {
+    backgroundColor: '#f5f5f5',
+},
+appbar: {
+    backgroundColor: '#FFD580',
+    justifyContent: 'center',
+    alignItems: 'center',
+},
+contentContainer: {
     flex: 1,
     justifyContent: 'center',
-  },
-  card: {
+    alignItems: 'center',
+},
+card: {
     margin: 8,
     width: '90%',
     alignSelf: 'center',
-    marginTop: 16,
-  },
-  cardContent: {
+    borderRadius: 10,
+    backgroundColor: '#fff',
+    elevation: 4,
+},
+cardContent: {
     alignItems: 'center', // Centraliza o conteúdo horizontalmente
-  },
-  cardActions: {
-    alignItems: 'center', // Centraliza os botões horizontalmente
-  },
-  container2: {
-    flex: 1,
     padding: 16,
-  },
-  listaItem: {
+},
+cardActions: {
+    alignItems: 'center', // Centraliza os botões horizontalmente
+    margin: 10,
+},
+container2: {
+     backgroundColor: '#FFD580',
+    padding: 20,
+    borderRadius: 10,
+    margin: 20,
+    shadowColor: 'rgba(0, 0, 0, 0.2)',
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowRadius: 10,
+  
+},
+listaItem: {
     borderWidth: 1,
     borderColor: '#ccc',
-    borderRadius: 5,
+    borderRadius: 10,
     marginBottom: 10,
-    padding: 8,
+    padding: 16,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    backgroundColor: '#fff',
+    elevation: 2,
+},
+container3: {
+    backgroundColor: '#FFD580',
+    padding: 20,
+    borderRadius: 10,
+    margin: 20,
+    shadowColor: 'rgba(0, 0, 0, 0.2)',
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowRadius: 10,
+},
+input: {
+    borderWidth: 2,
+    borderColor: '#ccc',
+    borderRadius: 10,
+    marginBottom: 10,
+    padding: 15,
+    backgroundColor: 'white'
+    
+},
+produtoItem: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 10,
+    marginBottom: 10,
+    padding: 15,
+    backgroundColor: '#fff',
+    elevation: 2,
+},  
+botao: {
+  borderWidth: 2, // Largura da borda
+  borderColor: '#3740fe', // Cor da borda (pode ajustar conforme necessário)
+  borderRadius: 10, // Arredonda os cantos para dar uma aparência mais suave
+},
+botaoAdicionar: {
+    backgroundColor: '#00aaff', // Cor de fundo azul claro
+    borderRadius: 10, // Bordas arredondadas
+    padding: 10, // Espaçamento interno
+    color: 'white', // Cor do texto branco
   },
-  container3: {
+  botaoSalvar: {
+    backgroundColor: '#00aaff', // Cor de fundo azul claro
+    borderRadius: 10, // Bordas arredondadas
+    padding: 10, // Espaçamento interno
+    color: 'white', // Cor do texto branco
+  },
+botaoCadastrar: {
+  borderWidth: 2, // Largura da borda
+  borderColor: '#3740fe', // Cor da borda (pode ajustar conforme necessário)
+  borderRadius: 10, // Arredonda os cantos para dar uma aparência mais suave
+  padding: 10, // Espaçamento interno
+  margin: 5, // Margem
+},
+detalheslista: {
+    backgroundColor: '#FFD580',
+    padding: 20,
+    borderRadius: 10,
+    margin: 20,
+    shadowColor: 'rgba(0, 0, 0, 0.2)',
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowRadius: 10,
+},
+table: {
     flex: 1,
-    padding: 16,
+    margin: 10,
   },
-  input: {
+  tableRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  tableCell: {
+    flex: 1,
     borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-    marginBottom: 10,
-    padding: 8,
+    borderColor: '#000',
+    padding: 10,
   },
-  produtoItem: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-    marginBottom: 10,
-    padding: 8,
+  tableHeader: {
+    backgroundColor: '#e0e0e0',
+    fontWeight: 'bold',
   },
+
 });
 
 

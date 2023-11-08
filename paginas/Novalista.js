@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, Button, FlatList, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import firebase from 'firebase';
-import {estilos} from '../css/estilos'
-
-
+import { estilos } from '../css/estilos';
 
 class NovaLista extends Component {
   constructor(props) {
@@ -19,19 +17,20 @@ class NovaLista extends Component {
 
   criarNovaLista = () => {
     const { nomeLista, produtos } = this.state;
-    const db = firebase.firestore(); // Aqui fica a instância do Firestore
+    const db = firebase.firestore();
 
     // Criar uma nova lista no Firestore
-    db.collection('listas').add({
-      nome: nomeLista,
-      produtos: produtos,
-    })
-    .then((docRef) => {
-      console.log('Nova lista criada com ID: ', docRef.id);
-    })
-    .catch((error) => {
-      console.error('Erro ao criar a lista: ', error);
-    });
+    db.collection('listas')
+      .add({
+        nome: nomeLista,
+        produtos: produtos,
+      })
+      .then((docRef) => {
+        console.log('Nova lista criada com ID: ', docRef.id);
+      })
+      .catch((error) => {
+        console.error('Erro ao criar a lista: ', error);
+      });
 
     // Limpar o estado
     this.setState({ nomeLista: '', produtos: [] });
@@ -66,7 +65,6 @@ class NovaLista extends Component {
           value={this.state.nomeLista}
           onChangeText={(text) => this.setState({ nomeLista: text })}
         />
-        
 
         <Text>Adicionar Produto:</Text>
         <TextInput
@@ -79,37 +77,63 @@ class NovaLista extends Component {
           style={estilos.input}
           placeholder="Valor"
           value={this.state.valorProduto}
-          onChangeText={(text) => this.setState({ valorProduto: parseFloat(text) || 0 })}
+          onChangeText={(text) => {
+            // Remover caracteres que não sejam dígitos ou ponto/vírgula
+            const sanitizedText = text.replace(/[^0-9,.]/g, '');
+
+            // Substituir ',' por '.' para permitir números de ponto flutuante
+            const formattedText = sanitizedText.replace(',', '.');
+
+            // Atualizar o estado com o valor formatado
+            this.setState({ valorProduto: formattedText });
+          }}
         />
         <TextInput
           style={estilos.input}
           placeholder="Quantidade"
           value={this.state.quantidadeProduto}
-          onChangeText={(text) => this.setState({ quantidadeProduto: parseInt(text) || 0 })}
+          onChangeText={(text) =>
+            this.setState({ quantidadeProduto: parseInt(text) || 0 })
+          }
         />
-        <Button title="Adicionar Produto" onPress={this.adicionarProduto} />
-        <br/>
-        <Button title="Salvar Lista" onPress={this.criarNovaLista} />
+        <Button
+          title="Adicionar Produto"
+          onPress={this.adicionarProduto}
+          style={estilos.botaoAdicionar}
+        />
+
+        <Button
+          title="Salvar Lista"
+          onPress={this.criarNovaLista}
+          style={estilos.botaoSalvar}
+        />
 
         <Text>Produtos Adicionados:</Text>
-        <FlatList
-          data={this.state.produtos}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => (
-            <View style={estilos.produtoItem}>
-              <Text>Nome: {item.nome}</Text>
-              <Text>Valor: {item.valor}</Text>
-              <Text>Quantidade: {item.quantidade}</Text>
-              <Text>Total: {item.total}</Text>
-            </View>
-          )}
-        />
-        
+        {this.state.produtos.length > 0 && (
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Valor</th>
+                <th>Quantidade</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.produtos.map((produto, index) => (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>{produto.nome}</td>
+                  <td>{produto.valor}</td>
+                  <td>{produto.quantidade}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </View>
     );
   }
 }
-
-
 
 export default NovaLista;

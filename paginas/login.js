@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button, TextInput, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, Text, Button, TextInput, ActivityIndicator} from 'react-native';
 import firebase from 'firebase';
 import {estilos} from '../css/estilos'
 
@@ -73,9 +73,10 @@ export default class Login extends Component {
         />
 
         <Button
-          color="#3740fe"
+          color="#FFD580"
           title="Logar"
           onPress={() => this.userLogin()}
+          style={estilos.botao}
         />
 
         <Text

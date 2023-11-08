@@ -90,7 +90,11 @@ export default class Cadastro extends Component {
           maxLength={8}
         />
 
-        <Button title="Cadastrar" color="#3740fe" onPress={() => this.cadastroUsuario()} />
+        <Button title="Cadastrar"
+                color="#FFD580"
+                onPress={() => this.cadastroUsuario()}
+                style={estilos.botaoCadastrar} // Estilo personalizado para o botão
+                />
 
         {this.state.errorMessage !== '' && (
           <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>

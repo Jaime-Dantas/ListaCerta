@@ -12,7 +12,7 @@ class ConsultarLista extends Component {
   }
 
   componentDidMount() {
-     // Recupere todas as listas do Firestore
+     // Recupera todas as listas do Firestore
     const db = firebase.firestore();
 
     db.collection('listas')
@@ -44,8 +44,7 @@ class ConsultarLista extends Component {
               <Button
                 title="Ver Detalhes"
                 onPress={() => {
-                  // Navegue para a tela de detalhes da lista com os produtos
-                  // proximo passo criar essa tela
+                  // Naveguar para a tela de detalhes da lista com os produtos                  
                   this.props.navigation.navigate('DetalhesLista', { listaId: item.id });
                 }}
               />
